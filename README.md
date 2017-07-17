@@ -1,3 +1,1 @@
-# nyumon_react
-
-入門React
+# 入門React
