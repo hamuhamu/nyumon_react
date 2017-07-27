@@ -26,8 +26,26 @@ var HelloClass = _react2.default.createClass({
 });
 // エレメントの生成
 var helloElement = _react2.default.createElement(HelloClass, { name: 'Taro' });
-// 描画
 _reactDom2.default.render(helloElement, content);
+
+function formatName(user) {
+    return user.firstName + ' ' + user.lastName;
+}
+
+var user = {
+    firstName: 'Harper',
+    lastName: 'Perez'
+};
+
+var element = _react2.default.createElement(
+    'h1',
+    null,
+    'Hello, ',
+    formatName(user),
+    '!'
+);
+
+_reactDom2.default.render(element, root);
 
 },{"react":184,"react-dom":32}],2:[function(require,module,exports){
 (function (process){
