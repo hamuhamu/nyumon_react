@@ -47,6 +47,23 @@ var element = _react2.default.createElement(
 
 _reactDom2.default.render(element, root);
 
+var text = ['はろー', 'わーるど'];
+_reactDom2.default.render(_react2.default.createElement(
+    'h2',
+    null,
+    text
+), hello);
+
+function dateToString(d) {
+    return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-');
+}
+
+_reactDom2.default.render(_react2.default.createElement(
+    'h2',
+    null,
+    dateToString(new Date())
+), date);
+
 },{"react":184,"react-dom":32}],2:[function(require,module,exports){
 (function (process){
 /**

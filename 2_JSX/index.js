@@ -33,3 +33,18 @@ ReactDOM.render(
     element,
     root
 );
+
+var text = ['はろー', 'わーるど'];
+ReactDOM.render(
+    <h2>{ text }</h2>,
+    hello
+);
+
+function dateToString(d) {
+    return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-');
+}
+
+ReactDOM.render(
+    <h2>{ dateToString(new Date()) }</h2>,
+    date
+);
