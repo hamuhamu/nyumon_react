@@ -29,20 +29,6 @@ var helloElement = _react2.default.createElement(HelloClass, { name: 'Taro' });
 // 描画
 _reactDom2.default.render(helloElement, content);
 
-// コンポーネントの定義
-var Hoge = _react2.default.createClass({
-    displayName: 'Hoge',
-
-    render: function render() {
-        return _react2.default.createElement(
-            'div',
-            null,
-            'Hello, ',
-            this.props.name
-        );
-    }
-});
-
 },{"react":184,"react-dom":32}],2:[function(require,module,exports){
 (function (process){
 /**

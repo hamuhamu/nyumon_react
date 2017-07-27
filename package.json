@@ -4,7 +4,7 @@
   "description": "入門React",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build2": "browserify -t babelify 2_JSX/index.js -o 2_JSX/compiled_index.js"
   },
   "repository": {
     "type": "git",
