@@ -19,3 +19,16 @@ class HelloWorld extends React.Component {
 
 var helloWorldElement = <HelloWorld/>;
 ReactDOM.render(helloWorldElement, content);
+
+
+class EventButton extends React.Component {
+    render() {
+        return <a className="button save" onClick={this.clickEvent}>保存</a>;
+    }
+    clickEvent() {
+        alert('ボタンが押下されたよ');
+    }
+}
+
+var eventButtonElement = <EventButton/>;
+ReactDOM.render(eventButtonElement, eventButton);

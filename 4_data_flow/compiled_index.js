@@ -71,6 +71,37 @@ var HelloWorld = function (_React$Component2) {
 var helloWorldElement = _react2.default.createElement(HelloWorld, null);
 _reactDom2.default.render(helloWorldElement, content);
 
+var EventButton = function (_React$Component3) {
+    _inherits(EventButton, _React$Component3);
+
+    function EventButton() {
+        _classCallCheck(this, EventButton);
+
+        return _possibleConstructorReturn(this, (EventButton.__proto__ || Object.getPrototypeOf(EventButton)).apply(this, arguments));
+    }
+
+    _createClass(EventButton, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'a',
+                { className: 'button save', onClick: this.clickEvent },
+                '\u4FDD\u5B58'
+            );
+        }
+    }, {
+        key: 'clickEvent',
+        value: function clickEvent() {
+            alert('aaa');
+        }
+    }]);
+
+    return EventButton;
+}(_react2.default.Component);
+
+var eventButtonElement = _react2.default.createElement(EventButton, null);
+_reactDom2.default.render(eventButtonElement, eventButton);
+
 },{"react":184,"react-dom":32}],2:[function(require,module,exports){
 (function (process){
 /**
