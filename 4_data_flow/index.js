@@ -1,9 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+class Child extends React.Component {
+    render() {
+        return <div>{this.props.one}, {this.props.two}</div>;
+    }
+}
 class HelloWorld extends React.Component {
     render() {
-        return <div>Hello, World</div>;
+        var props = {
+            one: 'foo',
+            two: 'bar'
+        };
+
+        return <Child {...props} />;
     }
 }
 

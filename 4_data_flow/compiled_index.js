@@ -19,8 +19,33 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var HelloWorld = function (_React$Component) {
-    _inherits(HelloWorld, _React$Component);
+var Child = function (_React$Component) {
+    _inherits(Child, _React$Component);
+
+    function Child() {
+        _classCallCheck(this, Child);
+
+        return _possibleConstructorReturn(this, (Child.__proto__ || Object.getPrototypeOf(Child)).apply(this, arguments));
+    }
+
+    _createClass(Child, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                this.props.one,
+                ', ',
+                this.props.two
+            );
+        }
+    }]);
+
+    return Child;
+}(_react2.default.Component);
+
+var HelloWorld = function (_React$Component2) {
+    _inherits(HelloWorld, _React$Component2);
 
     function HelloWorld() {
         _classCallCheck(this, HelloWorld);
@@ -31,11 +56,12 @@ var HelloWorld = function (_React$Component) {
     _createClass(HelloWorld, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                'Hello, World'
-            );
+            var props = {
+                one: 'foo',
+                two: 'bar'
+            };
+
+            return _react2.default.createElement(Child, props);
         }
     }]);
 
