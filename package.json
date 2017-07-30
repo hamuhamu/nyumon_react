@@ -20,6 +20,7 @@
   "homepage": "https://github.com/hamuhamu/nyumon_react#readme",
   "dependencies": {
     "jscodeshift": "^0.3.32",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },

@@ -136,6 +136,88 @@ Greeting.propTypes = {
 // nameを忘れていた場合、コンソールエラーになる
 _reactDom2.default.render(_react2.default.createElement(Greeting, { name: 'hoge' }), greeting);
 
+var User = function (_React$Component5) {
+    _inherits(User, _React$Component5);
+
+    function User(props) {
+        _classCallCheck(this, User);
+
+        var _this5 = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
+
+        _this5.state = { showOption: true };
+        _this5.clickEvent = _this5.clickEvent.bind(_this5);
+        return _this5;
+    }
+
+    _createClass(User, [{
+        key: 'render',
+        value: function render() {
+            if (!this.state.showOption) {
+                return null;
+            }
+
+            return _react2.default.createElement(
+                'div',
+                { onClick: this.clickEvent },
+                this.props.id,
+                ':',
+                this.props.name
+            );
+        }
+    }, {
+        key: 'clickEvent',
+        value: function clickEvent() {
+            alert('押下されたよ');
+            this.setState({ showOption: false });
+        }
+    }]);
+
+    return User;
+}(_react2.default.Component);
+
+User.propTypes = {
+    id: _propTypes2.default.number.isRequired,
+    name: _propTypes2.default.string.isRequired
+};
+
+var Users = function (_React$Component6) {
+    _inherits(Users, _React$Component6);
+
+    function Users(props) {
+        _classCallCheck(this, Users);
+
+        return _possibleConstructorReturn(this, (Users.__proto__ || Object.getPrototypeOf(Users)).call(this, props));
+    }
+
+    _createClass(Users, [{
+        key: 'render',
+        value: function render() {
+            var users = this.props.users.map(function (user) {
+                return _react2.default.createElement(User, { id: user.id, name: user.name, key: user.id });
+            });
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    '\u30E6\u30FC\u30B6\u30FC\u4E00\u89A7'
+                ),
+                users
+            );
+        }
+    }]);
+
+    return Users;
+}(_react2.default.Component);
+
+Users.defaultProps = {
+    users: [{ id: 1, name: "foo" }, { id: 2, name: "bar" }]
+};
+
+_reactDom2.default.render(_react2.default.createElement(Users, null), users);
+
 },{"prop-types":32,"react":186,"react-dom":34}],2:[function(require,module,exports){
 (function (process){
 /**
