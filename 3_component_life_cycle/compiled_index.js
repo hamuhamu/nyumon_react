@@ -22,7 +22,12 @@ var HelloClass = _react2.default.createClass({
             'Hello, ',
             this.props.name
         );
+    },
+    componentDidMount: function componentDidMount() {
+        // 描画が成功して、DOMにアクセス可能になる
+        console.log("componentDidMountだよ");
     }
+
 });
 // エレメントの生成
 var helloElement = _react2.default.createElement(HelloClass, { name: 'Taro' });
