@@ -11,7 +11,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// コンポーネントの定義
+// @see http://qiita.com/kwst/items/b1f36d0a384eab1bc284
 var HelloClass = _react2.default.createClass({
     displayName: 'HelloClass',
 
@@ -27,11 +27,59 @@ var HelloClass = _react2.default.createClass({
         // 描画が成功して、DOMにアクセス可能になる
         console.log("componentDidMountだよ");
     }
-
 });
-// エレメントの生成
+
 var helloElement = _react2.default.createElement(HelloClass, { name: 'Taro' });
 _reactDom2.default.render(helloElement, content);
+
+// アンチパターン
+var DateClass1 = _react2.default.createClass({
+    displayName: 'DateClass1',
+
+    getDefaultProps: function getDefaultProps() {
+        return {
+            date: new Date()
+        };
+    },
+    getInitialState: function getInitialState() {
+        return {
+            date: this.props.date.getDate()
+        };
+    },
+    render: function render() {
+        return _react2.default.createElement(
+            'div',
+            null,
+            'Day: ',
+            this.state.date
+        );
+    }
+});
+// エレメントの生成
+var dateElement1 = _react2.default.createElement(DateClass1, null);
+_reactDom2.default.render(dateElement1, date1);
+
+var DateClass2 = _react2.default.createClass({
+    displayName: 'DateClass2',
+
+    getDefaultProps: function getDefaultProps() {
+        return {
+            date: new Date()
+        };
+    },
+    render: function render() {
+        var date = this.props.date.getDate();
+        return _react2.default.createElement(
+            'div',
+            null,
+            'Day: ',
+            date
+        );
+    }
+});
+// エレメントの生成
+var dateElement2 = _react2.default.createElement(DateClass2, null);
+_reactDom2.default.render(dateElement2, date2);
 
 },{"react":184,"react-dom":32}],2:[function(require,module,exports){
 (function (process){
