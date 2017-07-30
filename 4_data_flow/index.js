@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var HelloClass = React.createClass({
-    render: function() {
-        return <div>Hello, {this.props.name}</div>;
-    },
-});
+class HelloWorld extends React.Component {
+    render() {
+        return <div>Hello, World</div>;
+    }
+}
 
-var helloElement = <HelloClass name="Taro" />;
-ReactDOM.render(helloElement, content);
+var helloWorldElement = <HelloWorld/>;
+ReactDOM.render(helloWorldElement, content);
