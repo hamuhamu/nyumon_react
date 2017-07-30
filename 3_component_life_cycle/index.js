@@ -15,7 +15,15 @@ var HelloClass = React.createClass({
 var helloElement = <HelloClass name="Taro" />;
 ReactDOM.render(helloElement, content);
 
-// アンチパターン
+/**
+ * アンチパターン
+ *
+ * 加工された値をgetInitialStateでstateに変更を加えるのはアンチパターンである
+ * 単一の情報源: a single source of truth の原則を守ること
+ *
+ *
+ * propsの値をstateに保存してはならない
+ */
 var DateClass1 = React.createClass({
     getDefaultProps: function() {
         return {
@@ -31,12 +39,13 @@ var DateClass1 = React.createClass({
         return <div>Day: {this.state.date}</div>;
     },
 });
-// エレメントの生成
+
 var dateElement1 = <DateClass1/>;
 ReactDOM.render(dateElement1, date1);
 
-
-
+/**
+ * 正しいやり方
+ */
 var DateClass2 = React.createClass({
     getDefaultProps: function() {
         return {
@@ -48,7 +57,7 @@ var DateClass2 = React.createClass({
         return <div>Day: {date}</div>;
     },
 });
-// エレメントの生成
+
 var dateElement2 = <DateClass2/>;
 ReactDOM.render(dateElement2, date2);
 
