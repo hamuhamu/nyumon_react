@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// コンポーネントの定義
+// @see http://qiita.com/kwst/items/b1f36d0a384eab1bc284
 var HelloClass = React.createClass({
     render: function() {
         return <div>Hello, {this.props.name}</div>;
