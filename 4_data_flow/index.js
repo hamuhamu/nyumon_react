@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 class Child extends React.Component {
     render() {
@@ -32,3 +33,17 @@ class EventButton extends React.Component {
 
 var eventButtonElement = <EventButton/>;
 ReactDOM.render(eventButtonElement, eventButton);
+
+
+class Greeting extends React.Component {
+    render() {
+        return (
+            <h1>Hello, {this.props.name}</h1>
+        );
+    }
+}
+Greeting.propTypes = {
+    name: PropTypes.string.isRequired
+};
+// nameを忘れていた場合、コンソールエラーになる
+ReactDOM.render(<Greeting name="hoge"/>, greeting);
