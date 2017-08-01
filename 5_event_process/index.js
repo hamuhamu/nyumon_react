@@ -2,21 +2,43 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-class Child extends React.Component {
+
+class LabelCustom extends React.Component {
     render() {
-        return <div>{this.props.one}, {this.props.two}</div>;
+        return (
+            <div>
+                <label>{this.props.textValue}</label>
+            </div>
+        );
     }
 }
-class HelloWorld extends React.Component {
-    render() {
-        var props = {
-            one: 'foo',
-            two: 'bar'
+
+class TextBox extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            textValue: ''
         };
 
-        return <Child {...props} />;
+        this.onChangeEvent = this.onChangeEvent.bind(this);
+
+    }
+
+    render() {
+        return (
+            // divでくくる必要性がある
+            <div>
+                <LabelCustom textValue={this.state.textValue}/>
+                <input onChange={this.onChangeEvent} type="text" />
+            </div>
+        );
+    }
+
+    onChangeEvent(e) {
+        this.setState({textValue : e.target.value})
     }
 }
 
-var helloWorldElement = <HelloWorld/>;
-ReactDOM.render(helloWorldElement, content);
+ReactDOM.render(<TextBox/>, sample_text_box);
+

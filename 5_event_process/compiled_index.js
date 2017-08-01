@@ -23,57 +23,74 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Child = function (_React$Component) {
-    _inherits(Child, _React$Component);
+var LabelCustom = function (_React$Component) {
+    _inherits(LabelCustom, _React$Component);
 
-    function Child() {
-        _classCallCheck(this, Child);
+    function LabelCustom() {
+        _classCallCheck(this, LabelCustom);
 
-        return _possibleConstructorReturn(this, (Child.__proto__ || Object.getPrototypeOf(Child)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (LabelCustom.__proto__ || Object.getPrototypeOf(LabelCustom)).apply(this, arguments));
     }
 
-    _createClass(Child, [{
+    _createClass(LabelCustom, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
                 null,
-                this.props.one,
-                ', ',
-                this.props.two
+                _react2.default.createElement(
+                    'label',
+                    null,
+                    this.props.textValue
+                )
             );
         }
     }]);
 
-    return Child;
+    return LabelCustom;
 }(_react2.default.Component);
 
-var HelloWorld = function (_React$Component2) {
-    _inherits(HelloWorld, _React$Component2);
+var TextBox = function (_React$Component2) {
+    _inherits(TextBox, _React$Component2);
 
-    function HelloWorld() {
-        _classCallCheck(this, HelloWorld);
+    function TextBox(props) {
+        _classCallCheck(this, TextBox);
 
-        return _possibleConstructorReturn(this, (HelloWorld.__proto__ || Object.getPrototypeOf(HelloWorld)).apply(this, arguments));
+        var _this2 = _possibleConstructorReturn(this, (TextBox.__proto__ || Object.getPrototypeOf(TextBox)).call(this, props));
+
+        _this2.state = {
+            textValue: ''
+        };
+
+        _this2.onChangeEvent = _this2.onChangeEvent.bind(_this2);
+
+        return _this2;
     }
 
-    _createClass(HelloWorld, [{
+    _createClass(TextBox, [{
         key: 'render',
         value: function render() {
-            var props = {
-                one: 'foo',
-                two: 'bar'
-            };
-
-            return _react2.default.createElement(Child, props);
+            return (
+                // divでくくる必要性がある
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(LabelCustom, { textValue: this.state.textValue }),
+                    _react2.default.createElement('input', { onChange: this.onChangeEvent, type: 'text' })
+                )
+            );
+        }
+    }, {
+        key: 'onChangeEvent',
+        value: function onChangeEvent(e) {
+            this.setState({ textValue: e.target.value });
         }
     }]);
 
-    return HelloWorld;
+    return TextBox;
 }(_react2.default.Component);
 
-var helloWorldElement = _react2.default.createElement(HelloWorld, null);
-_reactDom2.default.render(helloWorldElement, content);
+_reactDom2.default.render(_react2.default.createElement(TextBox, null), sample_text_box);
 
 },{"prop-types":32,"react":186,"react-dom":34}],2:[function(require,module,exports){
 (function (process){
