@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
 
 class LabelCustom extends React.Component {
@@ -8,6 +7,17 @@ class LabelCustom extends React.Component {
         return (
             <div>
                 <label>{this.props.textValue}</label>
+            </div>
+        );
+    }
+}
+
+class EraserButton extends React.Component {
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.props.onClick}>けす！</button>
             </div>
         );
     }
@@ -31,12 +41,17 @@ class TextBox extends React.Component {
             <div>
                 <LabelCustom textValue={this.state.textValue}/>
                 <input onChange={this.onChangeEvent} type="text" />
+                <EraserButton onClick={this.onEraserButtonClick.bind(this)} />
             </div>
         );
     }
 
     onChangeEvent(e) {
-        this.setState({textValue : e.target.value})
+        this.setState({textValue : e.target.value});
+    }
+
+    onEraserButtonClick() {
+        this.setState({textValue : ''});
     }
 }
 
