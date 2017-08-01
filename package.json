@@ -7,7 +7,8 @@
     "build2": "browserify -t babelify 2_JSX/index.js -o 2_JSX/compiled_index.js",
     "build3": "browserify -t babelify 3_component_life_cycle/index.js -o 3_component_life_cycle/compiled_index.js",
     "build4": "browserify -t babelify 4_data_flow/index.js -o 4_data_flow/compiled_index.js",
-    "build5": "browserify -t babelify 5_event_process/index.js -o 5_event_process/compiled_index.js"
+    "build5": "browserify -t babelify 5_event_process/index.js -o 5_event_process/compiled_index.js",
+    "build6": "browserify -t babelify 6_component_composition/index.js -o 6_component_composition/compiled_index.js"
   },
   "repository": {
     "type": "git",
