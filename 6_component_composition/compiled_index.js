@@ -71,7 +71,7 @@ RadioInput.propTypes = {
     id: _propTypes2.default.number.isRequired,
     name: _propTypes2.default.string.isRequired,
     label: _propTypes2.default.string.isRequired,
-    value: _propTypes2.default.string.isRequired,
+    value: _propTypes2.default.number.isRequired,
     checked: _propTypes2.default.bool.isRequired
 };
 RadioInput.defaultProps = {
@@ -93,7 +93,8 @@ var MultipleChoiceQuestion = function (_React$Component2) {
 
         _this2.state = {
             id: 'multipule-choice',
-            value: props.value
+            value: props.value,
+            checked: false
         };
         return _this2;
     }
@@ -101,6 +102,8 @@ var MultipleChoiceQuestion = function (_React$Component2) {
     _createClass(MultipleChoiceQuestion, [{
         key: 'render',
         value: function render() {
+            var _this3 = this;
+
             var choices = this.props.choices.map(function (choice, i) {
                 return _react2.default.createElement(RadioInput
                 // @see https://facebook.github.io/react/docs/lists-and-keys.html#keys
@@ -109,7 +112,8 @@ var MultipleChoiceQuestion = function (_React$Component2) {
                     name: choice.name,
                     label: choice.label,
                     value: choice.value,
-                    checked: false
+                    checked: _this3.state.checked,
+                    onChange: _this3.handleChanged
                 });
             });
 
@@ -128,6 +132,12 @@ var MultipleChoiceQuestion = function (_React$Component2) {
                 )
             );
         }
+    }, {
+        key: 'handleChanged',
+        value: function handleChanged(e) {
+            var checked = e.target.checked;
+            this.setState({ checked: checked });
+        }
     }]);
 
     return MultipleChoiceQuestion;
@@ -139,7 +149,7 @@ MultipleChoiceQuestion.propTypes = {
     //, onCompleted: PropTypes.func.isRequired
 };
 MultipleChoiceQuestion.defaultProps = {
-    choices: [{ name: "foo", label: "ラベル", value: "バリュー" }, { name: "foo", label: "ラベル", value: "バリュー" }]
+    choices: [{ name: "MultipleChoiceQuestion", label: "らじお1", value: 1 }, { name: "MultipleChoiceQuestion", label: "らじお2", value: 2 }]
 };
 
 _reactDom2.default.render(_react2.default.createElement(MultipleChoiceQuestion, { value: '\u3070\u308A\u3085\u30FC' }), hoge);

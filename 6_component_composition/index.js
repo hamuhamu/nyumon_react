@@ -36,7 +36,7 @@ RadioInput.propTypes = {
     id: PropTypes.number.isRequired
     , name: PropTypes.string.isRequired
     , label: PropTypes.string.isRequired
-    , value: PropTypes.string.isRequired
+    , value: PropTypes.number.isRequired
     , checked: PropTypes.bool.isRequired
 };
 RadioInput.defaultProps = {
@@ -55,6 +55,7 @@ class MultipleChoiceQuestion extends React.Component {
         this.state = {
             id: 'multipule-choice'
             , value: props.value
+            , checked: false
         };
     }
 
@@ -67,7 +68,8 @@ class MultipleChoiceQuestion extends React.Component {
                 name={choice.name}
                 label={choice.label}
                 value={choice.value}
-                checked={false}
+                checked={this.state.checked}
+                onChange={this.handleChanged}
             />
         });
 
@@ -82,6 +84,11 @@ class MultipleChoiceQuestion extends React.Component {
             </div>
         );
     }
+
+    handleChanged (e) {
+        var checked = e.target.checked;
+        this.setState({checked: checked});
+    }
 }
 MultipleChoiceQuestion.propTypes = {
     value: PropTypes.string.isRequired
@@ -90,8 +97,8 @@ MultipleChoiceQuestion.propTypes = {
 };
 MultipleChoiceQuestion.defaultProps = {
     choices: [
-        {name: "foo", label: "ラベル", value: "バリュー"}
-        , {name: "foo", label: "ラベル", value: "バリュー"}
+        {name: "MultipleChoiceQuestion", label: "らじお1", value: 1}
+        , {name: "MultipleChoiceQuestion", label: "らじお2", value: 2}
     ]
 };
 
