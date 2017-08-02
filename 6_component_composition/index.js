@@ -1,59 +1,99 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
+/**
+ * RadioInput
+ */
+class RadioInput extends React.Component {
+    constructor(props) {
+        super(props);
+        // idはラジオボックスの中でユニークのためstate
+        // checkedはユーザの操作によって変更されるのでstate
+        this.state = {
+            id: props.id,
+            checked: props.checked
+        };
+    }
 
-class LabelCustom extends React.Component {
     render() {
         return (
-            <div>
-                <label>{this.props.textValue}</label>
+            <div className="radio">
+                <label htmlFor={this.state.id}>
+                    <input type="radio"
+                           id={this.state.id}
+                           name={this.props.name}
+                           value={this.props.value}
+                           checked={this.state.checked}
+                    />
+                    {this.props.label}
+                </label>
             </div>
         );
     }
 }
+RadioInput.propTypes = {
+    id: PropTypes.number.isRequired
+    , name: PropTypes.string.isRequired
+    , label: PropTypes.string.isRequired
+    , value: PropTypes.string.isRequired
+    , checked: PropTypes.bool.isRequired
+};
+RadioInput.defaultProps = {
+    id: null,
+    checked: false
+};
 
-class EraserButton extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <button onClick={this.props.onClick}>けす！</button>
-            </div>
-        );
-    }
-}
-
-class TextBox extends React.Component {
+/**
+ * MultipleChoiceQuestion
+ */
+class MultipleChoiceQuestion extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            textValue: ''
+            id: 'multipule-choice'
+            , value: props.value
         };
-
-        this.onChangeEvent = this.onChangeEvent.bind(this);
-
     }
 
     render() {
+        var choices = this.props.choices.map((choice, i) => {
+            return <RadioInput
+                // @see https://facebook.github.io/react/docs/lists-and-keys.html#keys
+                key={'choice-' + i}
+                id={i}
+                name={choice.name}
+                label={choice.label}
+                value={choice.value}
+                checked={false}
+            />
+        });
+
         return (
-            // divでくくる必要性がある
-            <div>
-                <LabelCustom textValue={this.state.textValue}/>
-                <input onChange={this.onChangeEvent} type="text" />
-                <EraserButton onClick={this.onEraserButtonClick.bind(this)} />
+            <div className="form-group">
+                <label htmlFor={this.state.id}>
+                    { this.props.label }
+                </label>
+                <div>
+                    {choices}
+                </div>
             </div>
         );
     }
-
-    onChangeEvent(e) {
-        this.setState({textValue : e.target.value});
-    }
-
-    onEraserButtonClick() {
-        this.setState({textValue : ''});
-    }
 }
+MultipleChoiceQuestion.propTypes = {
+    value: PropTypes.string.isRequired
+    , choices: PropTypes.array.isRequired
+    //, onCompleted: PropTypes.func.isRequired
+};
+MultipleChoiceQuestion.defaultProps = {
+    choices: [
+        {name: "foo", label: "ラベル", value: "バリュー"}
+        , {name: "foo", label: "ラベル", value: "バリュー"}
+    ]
+};
 
-ReactDOM.render(<TextBox/>, sample_text_box);
+ReactDOM.render(<MultipleChoiceQuestion value="ばりゅー" />, hoge);
 
