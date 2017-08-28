@@ -12,4 +12,4 @@ watchifyを使うことで、ファイルの更新時に自動的にビルドを
 ## React Developer Tool
 
 Reactのデバッグに使える。
-https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ja  
+https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ja
