@@ -8,7 +8,8 @@
     "build3": "browserify -t babelify 3_component_life_cycle/index.js -o 3_component_life_cycle/compiled_index.js",
     "build4": "browserify -t babelify 4_data_flow/index.js -o 4_data_flow/compiled_index.js",
     "build5": "browserify -t babelify 5_event_process/index.js -o 5_event_process/compiled_index.js",
-    "build6": "browserify -t babelify 6_component_composition/index.js -o 6_component_composition/compiled_index.js"
+    "build6": "browserify -t babelify 6_component_composition/index.js -o 6_component_composition/compiled_index.js",
+    "test": "NODE_PATH=15_testing mocha --ui tdd"
   },
   "repository": {
     "type": "git",
@@ -22,15 +23,16 @@
   "homepage": "https://github.com/hamuhamu/nyumon_react#readme",
   "dependencies": {
     "jscodeshift": "^0.3.32",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "prop-types": "^15.6.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babelify": "^7.3.0",
-    "browserify": "^14.4.0"
+    "browserify": "^14.5.0",
+    "mocha": "^4.0.0"
   }
 }
